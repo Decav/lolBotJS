@@ -16,5 +16,5 @@ app.use('/champion', championRouter)
 app.use('/meta', metaController)
 
 app.listen(process.env.PORT, ()=>{
-    console.log(`Servidor corriendo en el puerto: ${port}`)
+    console.log(`Servidor corriendo en el puerto: ${process.env.PORT}`)
 })
