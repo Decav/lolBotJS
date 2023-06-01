@@ -1,0 +1,6 @@
+POST http://localhost:3001/champion/
+content-type: application/json
+
+{
+    "name": "Garen", "imageBuild": "a"
+}

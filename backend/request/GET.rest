@@ -1,0 +1,3 @@
+##GET http://localhost:3001/champion/
+
+GET http://localhost:3001/champion/name/Garen

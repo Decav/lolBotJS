@@ -1,0 +1,29 @@
+POST http://localhost:3001/meta/
+content-type: application/json
+
+{
+    "patch": "13.10", 
+    "champions": [
+        {
+            "role": "TOP",
+            "championsArray": ["Mordekaiser", "Malphite", "Illaoi", "Fiora", "Kayle"]
+        },
+        {
+            "role": "JG",
+            "championsArray": ["Kha'Zix", "Amumu", "Rammus", "Nocturne", "Jarvan IV"]
+        },
+        {
+            "role": "MID",
+            "championsArray": ["Aurelion Sol", "Fizz", "Malzahar", "Ahri", "Veigar"]
+        },
+        {
+            "role": "ADC",
+            "championsArray": ["Jhin", "Kog'Maw", "Miss Fortune", "Jinx", "Nilah"]
+        },
+        {
+            "role": "SUPP",
+            "championsArray": ["Blitzcrank", "Milio", "Lux", "Xerath", "Nautilus"]
+        }
+    ]  
+    
+}
