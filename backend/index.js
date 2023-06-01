@@ -13,7 +13,3 @@ app.use(express.json())
 // Utilización de rutas
 app.use('/champion', championRouter)
 app.use('/meta', metaController)
-
-app.listen(3001, ()=>{
-    console.log('Servidor corriendo en el puerto: 3001')
-})
