@@ -31,6 +31,7 @@ module.exports = {
         if (role == null) {
             axios.get(url + patch)
             .then(response => {
+                console.log("request -> " + url + patch)
                 console.log("response -> " + JSON.stringify(response.data));
                 let meta = response.data[0]
                 let description = resourcesHelper.getChampionList(meta)
@@ -68,6 +69,7 @@ module.exports = {
         } else {
             axios.get(url + `role/${patch}/${role.toUpperCase()}`)
             .then(response => {
+                console.log("request -> " + url + `role/${patch}/${role.toUpperCase()}`)
                 console.log("response -> " + JSON.stringify(response.data));
                 let meta = response.data
                 let description = resourcesHelper.getChampionObject(meta)
