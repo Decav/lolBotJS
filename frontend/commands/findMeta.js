@@ -28,6 +28,7 @@ module.exports = {
         let role = interaction.options.getString("rol")
         console.log("patch -> " + patch)
         console.log("role -> " + role)
+        console.log("request -> " + url + patch)
         if (role == null) {
             axios.get(url + patch)
             .then(response => {
