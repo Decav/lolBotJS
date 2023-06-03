@@ -4,6 +4,7 @@ const { SlashCommandBuilder } = require("@discordjs/builders")
 const { EmbedBuilder } = require("discord.js")
 const axios = require("axios")
 const resourcesHelper = require("../utils/resourcesHelper")
+const colorResources = require("../utils/colorResources")
 
 module.exports = {
 	data: new SlashCommandBuilder()
@@ -33,7 +34,8 @@ module.exports = {
 					embeds: [
 						new EmbedBuilder()
 							.setDescription(`Build -> ${champ.name}`)
-							.setImage(champ.imageBuild),
+							.setImage(champ.imageBuild)
+							.setColor(colorResources.white),
 					],
 				})
 			})
@@ -44,13 +46,17 @@ module.exports = {
 					typeError = "Campeon buscado no existe, revisa que esté bien escrito."
 					interaction.reply({
 						embeds: [
-							new EmbedBuilder().setDescription(`Error -> ${typeError}`),
+							new EmbedBuilder()
+								.setDescription(`Error -> ${typeError}`)
+								.setColor(colorResources.red),
 						],
 					})
 				} else {
 					interaction.reply({
 						embeds: [
-							new EmbedBuilder().setDescription(`ErrorDesconocido -> ${error}`),
+							new EmbedBuilder()
+								.setDescription(`ErrorDesconocido -> ${error}`)
+								.setColor(colorResources.red),
 						],
 					})
 				}

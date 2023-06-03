@@ -7,6 +7,7 @@ const { EmbedBuilder } = require("discord.js")
 const axios = require("axios")
 const validation = require("../utils/validation")
 const resourcesHelper = require("../utils/resourcesHelper")
+const colorResources = require("../utils/colorResources")
 
 module.exports = {
 	data: new SlashCommandBuilder()
@@ -19,7 +20,7 @@ module.exports = {
 				.setRequired(true)
 		),
 	execute: async ({ client, interaction }) => {
-		//get
+		//Obtener datos del comando seleccionado
 		let summonerName = interaction.options.getString("nombre")
 		const getSummonerRanks = (summonerId) => {
 			axios
@@ -41,7 +42,8 @@ module.exports = {
 										.setDescription(
 											resourcesHelper.setEmbedDescription(soloRanks)
 										)
-										.setThumbnail(validation.validateTierIcon(soloRanks.tier)),
+										.setThumbnail(validation.validateTierIcon(soloRanks.tier))
+										.setColor(colorResources.blue),
 									new EmbedBuilder()
 										.setTitle(
 											"Clasificatoria Flexible " + flexRanks.summonerName
@@ -49,13 +51,15 @@ module.exports = {
 										.setDescription(
 											resourcesHelper.setEmbedDescription(flexRanks)
 										)
-										.setThumbnail(validation.validateTierIcon(flexRanks.tier)),
+										.setThumbnail(validation.validateTierIcon(flexRanks.tier))
+										.setColor(colorResources.purple),
 									new EmbedBuilder()
 										.setTitle("Clasificatoria TFT " + tftRanks.summonerName)
 										.setDescription(
 											resourcesHelper.setEmbedDescription(tftRanks)
 										)
-										.setThumbnail(validation.validateTierIcon(tftRanks.tier)),
+										.setThumbnail(validation.validateTierIcon(tftRanks.tier))
+										.setColor(colorResources.green),
 								],
 							})
 						} else if (validation.hasSoloAndFlex(response.data)) {
@@ -70,7 +74,8 @@ module.exports = {
 										.setDescription(
 											resourcesHelper.setEmbedDescription(soloRanks)
 										)
-										.setThumbnail(validation.validateTierIcon(soloRanks.tier)),
+										.setThumbnail(validation.validateTierIcon(soloRanks.tier))
+										.setColor(colorResources.blue),
 									new EmbedBuilder()
 										.setTitle(
 											"Clasificatoria Flexible " + flexRanks.summonerName
@@ -78,7 +83,8 @@ module.exports = {
 										.setDescription(
 											resourcesHelper.setEmbedDescription(flexRanks)
 										)
-										.setThumbnail(validation.validateTierIcon(flexRanks.tier)),
+										.setThumbnail(validation.validateTierIcon(flexRanks.tier))
+										.setColor(colorResources.purple),
 								],
 							})
 						} else if (validation.hasOneQueue(response.data)) {
@@ -94,6 +100,7 @@ module.exports = {
 										resourcesHelper.setEmbedDescription(soloRanks)
 									)
 									.setThumbnail(validation.validateTierIcon(soloRanks.tier))
+									.setColor(colorResources.blue)
 							} else if (validation.hasJustFlex(response.data)) {
 								flexRanks = validation.getFlexRanks(response.data)
 								embed = new EmbedBuilder()
@@ -102,12 +109,14 @@ module.exports = {
 										resourcesHelper.setEmbedDescription(flexRanks)
 									)
 									.setThumbnail(validation.validateTierIcon(flexRanks.tier))
+									.setColor(colorResources.purple)
 							} else if (validation.hasJustTFT(response.data)) {
 								tftRanks = validation.getTFTRanks(response.data)
 								embed = new EmbedBuilder()
 									.setTitle("Clasificatoria TFT " + tftRanks.summonerName)
 									.setDescription(resourcesHelper.setEmbedDescription(tftRanks))
 									.setThumbnail(validation.validateTierIcon(tftRanks.tier))
+									.setColor(colorResources.green)
 							}
 
 							interaction.reply({
@@ -121,7 +130,8 @@ module.exports = {
 									.setTitle(summonerName)
 									.setDescription(
 										`El invocador aun no se ha clasificado en ninguna liga`
-									),
+									)
+									.setColor(colorResources.red),
 							],
 						})
 					}
@@ -131,9 +141,11 @@ module.exports = {
 					console.log("request -> " + riotDataURL + summonerId)
 					interaction.reply({
 						embeds: [
-							new EmbedBuilder().setDescription(
-								`Error -> no se encontraron datos de el invocador`
-							),
+							new EmbedBuilder()
+								.setDescription(
+									`Error -> no se encontraron datos de el invocador`
+								)
+								.setColor(colorResources.red),
 						],
 					})
 				})
@@ -152,9 +164,9 @@ module.exports = {
 				console.log("request -> " + riotSummonerDataURL + summonerName)
 				interaction.reply({
 					embeds: [
-						new EmbedBuilder().setDescription(
-							`Error -> no se encontró el invocador`
-						),
+						new EmbedBuilder()
+							.setDescription(`Error -> no se encontró el invocador`)
+							.setColor(colorResources.red),
 					],
 				})
 			})

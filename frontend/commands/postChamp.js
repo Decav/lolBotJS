@@ -3,10 +3,12 @@ const myUserID = process.env.USER_ID
 const { SlashCommandBuilder } = require("@discordjs/builders")
 const { EmbedBuilder } = require("discord.js")
 const axios = require("axios")
+const resourcesHelper = require("../utils/resourcesHelper")
+const colorResources = require("../utils/colorResources")
 
 module.exports = {
 	data: new SlashCommandBuilder()
-		.setName("newbuild")
+		.setName("nueva_build")
 		.setDescription("Crea una nueva build de un campeon")
 		.addSubcommand((subcommand) =>
 			subcommand
@@ -36,23 +38,29 @@ module.exports = {
 					console.log("request -> " + url)
 					console.log("response -> " + response.data[0])
 					interaction.reply({
-						embeds: [new EmbedBuilder().setDescription(`Campeon añadido`)],
+						embeds: [
+							new EmbedBuilder()
+								.setDescription(`Build de campeon añadida`)
+								.setColor(colorResources.gray),
+						],
 					})
 				})
 				.catch((error) => {
 					console.error("error -> " + error)
 					interaction.reply({
 						embeds: [
-							new EmbedBuilder().setDescription(`ErrorDesconocido -> ${error}`),
+							new EmbedBuilder()
+								.setDescription(`ErrorDesconocido -> ${error}`)
+								.setColor(colorResources.red),
 						],
 					})
 				})
 		} else {
 			interaction.reply({
 				embeds: [
-					new EmbedBuilder().setDescription(
-						"No tienes permiso para ejecutar este comando"
-					),
+					new EmbedBuilder()
+						.setDescription(resourcesHelper.permissionError)
+						.setColor(colorResources.red),
 				],
 			})
 		}

@@ -24,7 +24,6 @@ const commandFiles = fs
 for (const file of commandFiles) {
 	const filePath = path.join(commandsPath, file)
 	const command = require(filePath)
-
 	client.commands.set(command.data.name, command)
 	commands.push(command.data.toJSON())
 }
@@ -32,7 +31,6 @@ for (const file of commandFiles) {
 client.on("ready", () => {
 	// obtener todos los ids de los servidores
 	const guild_ids = client.guilds.cache.map((guild) => guild.id)
-
 	const rest = new REST({ version: "9" }).setToken(process.env.TOKEN)
 	for (const guildId of guild_ids) {
 		rest
@@ -45,11 +43,14 @@ client.on("ready", () => {
 })
 
 client.on("interactionCreate", async (interaction) => {
-	if (!interaction.isCommand()) return
-
-	const command = client.commands.get(interaction.commandName)
-	if (!command) return
-	await command.execute({ client, interaction })
+	try {
+		if (!interaction.isCommand()) return
+		const command = client.commands.get(interaction.commandName)
+		if (!command) return
+		await command.execute({ client, interaction })
+	} catch (error) {
+		console.error(error)
+	}
 })
 
 client.login(process.env.TOKEN)

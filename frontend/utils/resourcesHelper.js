@@ -27,11 +27,16 @@ const getChampionObject = (data) => {
 	return `${role} -> ${champions}`
 }
 
+const permissionError = () => {
+	return "No tienes permiso para ejecutar este comando"
+}
+
 const resourcesHelper = {
 	capitalize,
 	setEmbedDescription,
 	getChampionList,
 	getChampionObject,
+	permissionError,
 }
 
 module.exports = resourcesHelper

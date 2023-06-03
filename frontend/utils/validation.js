@@ -3,23 +3,23 @@ const iconResources = require("./iconResources")
 
 const validateTierIcon = (tier) => {
 	switch (tier) {
-		case "IRON":
+		case rankTypes.IRON:
 			return iconResources.ironIcon
-		case "BRONZE":
+		case rankTypes.BRONZE:
 			return iconResources.bronzeIcon
-		case "SILVER":
+		case rankTypes.SILVER:
 			return iconResources.silverIcon
-		case "GOLD":
+		case rankTypes.GOLD:
 			return iconResources.goldIcon
-		case "PLATINUM":
+		case rankTypes.PLATINUM:
 			return iconResources.platinumIcon
-		case "DIAMOND":
+		case rankTypes.DIAMOND:
 			return iconResources.diamondIcon
-		case "MASTER":
+		case rankTypes.MASTER:
 			return iconResources.masterIcon
-		case "GRANDMASTER":
+		case rankTypes.GMASTER:
 			return iconResources.gMasterIcon
-		case "CHALLENGER":
+		case rankTypes.CHALLENGER:
 			return iconResources.challengerIcon
 		default:
 			break
@@ -114,6 +114,18 @@ const roleTypes = {
 	MID: "MID",
 	ADC: "ADC",
 	SUPP: "SUPP",
+}
+
+const rankTypes = {
+	IRON: "IRON",
+	BRONZE: "BRONZE",
+	SILVER: "SILVER",
+	GOLD: "GOLD",
+	PLATINUM: "PLATINUM",
+	DIAMOND: "DIAMOND",
+	MASTER: "MASTER",
+	GMASTER: "GRANDMASTER",
+	CHALLENGER: "CHALLENGER",
 }
 
 const validation = {

@@ -25,7 +25,7 @@ module.exports = {
 				)
 		),
 	execute: async ({ client, interaction }) => {
-		//get
+		//Obtener datos del comando seleccionado
 		let patch = interaction.options.getString("parche")
 		let role = interaction.options.getString("rol")
 		console.log("patch -> " + patch)
@@ -43,7 +43,7 @@ module.exports = {
 							new EmbedBuilder()
 								.setTitle(`Meta parche:  ${meta.patch}`)
 								.setDescription(description)
-								.setColor(colorResources.Naranja),
+								.setColor(colorResources.orange),
 						],
 					})
 				})
@@ -56,7 +56,7 @@ module.exports = {
 							embeds: [
 								new EmbedBuilder()
 									.setDescription(`Error -> ${typeError}`)
-									.setColor(colorResources.Rojo),
+									.setColor(colorResources.red),
 							],
 						})
 					} else {
@@ -64,7 +64,7 @@ module.exports = {
 							embeds: [
 								new EmbedBuilder()
 									.setDescription(`ErrorDesconocido -> ${error}`)
-									.setColor(colorResources.Rojo),
+									.setColor(colorResources.red),
 							],
 						})
 					}
@@ -84,7 +84,7 @@ module.exports = {
 							new EmbedBuilder()
 								.setTitle(`Meta parche:  ${patch}`)
 								.setDescription(description)
-								.setColor(colorResources.Amarillo),
+								.setColor(colorResources.yellow),
 						],
 					})
 				})
@@ -99,7 +99,7 @@ module.exports = {
 								embeds: [
 									new EmbedBuilder()
 										.setDescription(`Error -> ${typeError}`)
-										.setColor(colorResources.Rojo),
+										.setColor(colorResources.red),
 								],
 							})
 						} else {
@@ -108,7 +108,7 @@ module.exports = {
 								embeds: [
 									new EmbedBuilder()
 										.setDescription(`Error -> ${typeError}`)
-										.setColor(colorResources.Rojo),
+										.setColor(colorResources.red),
 								],
 							})
 						}
@@ -117,7 +117,7 @@ module.exports = {
 							embeds: [
 								new EmbedBuilder()
 									.setDescription(`ErrorDesconocido -> ${error}`)
-									.setColor(colorResources.Rojo),
+									.setColor(colorResources.red),
 							],
 						})
 					}
