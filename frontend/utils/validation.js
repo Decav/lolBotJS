@@ -1,4 +1,3 @@
-const resourcesHelper = require("./resourcesHelper")
 const iconResources = require("./iconResources")
 
 const validateTierIcon = (tier) => {

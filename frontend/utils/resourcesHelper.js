@@ -34,6 +34,7 @@ const permissionError = () => {
 const resourcesHelper = {
 	capitalize,
 	setEmbedDescription,
+	setEmbedFields,
 	getChampionList,
 	getChampionObject,
 	permissionError,
