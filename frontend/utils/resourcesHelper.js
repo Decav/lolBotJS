@@ -31,6 +31,14 @@ const permissionError = () => {
 	return "No tienes permiso para ejecutar este comando"
 }
 
+const searchNotFoundError = () => {
+	return "La version buscada no se ha registrado."
+}
+
+const roleNotFoundError = () => {
+	return "El rol recibido no existe, asegurate de haberlo escrito bien"
+}
+
 const resourcesHelper = {
 	capitalize,
 	setEmbedDescription,
@@ -38,6 +46,8 @@ const resourcesHelper = {
 	getChampionList,
 	getChampionObject,
 	permissionError,
+	searchNotFoundError,
+	roleNotFoundError,
 }
 
 module.exports = resourcesHelper

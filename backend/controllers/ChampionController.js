@@ -60,24 +60,6 @@ championRouter.put("/:id", (request, response) => {
 		})
 })
 
-// Eliminar un objeto de la bd
-championRouter.delete("/:id", (request, response) => {
-	let { id } = request.params
-	Champion.findByIdAndDelete(id)
-		.then((result) => {
-			Favorito.remove({ id_champion: id })
-				.then((result) => {
-					response.status(204).json(result)
-				})
-				.catch((e) => {
-					console.log(e)
-				})
-		})
-		.catch((e) => {
-			console.log(e)
-		})
-})
-
 championRouter.get("/name/:name", (request, response) => {
 	let { name } = request.params
 	Champion.find({ name: name })

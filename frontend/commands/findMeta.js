@@ -54,13 +54,13 @@ module.exports = {
 					})
 					.catch((error) => {
 						console.error("error -> " + error)
-						let typeError = ""
 						if (error instanceof TypeError) {
-							typeError = "La version buscada no se ha registrado."
 							interaction.reply({
 								embeds: [
 									new EmbedBuilder()
-										.setDescription(`Error -> ${typeError}`)
+										.setDescription(
+											`Error -> ${resourcesHelper.searchNotFoundError()}`
+										)
 										.setColor(colorResources.red),
 								],
 							})
@@ -95,24 +95,24 @@ module.exports = {
 					})
 					.catch((error) => {
 						console.error("error -> " + error)
-						let typeError = ""
 						if (error instanceof TypeError) {
 							if (!validation.isValidRole(role)) {
-								typeError =
-									"El rol recibido no existe, asegurate de haberlo escrito bien"
 								interaction.reply({
 									embeds: [
 										new EmbedBuilder()
-											.setDescription(`Error -> ${typeError}`)
+											.setDescription(
+												`Error -> ${resourcesHelper.roleNotFoundError()}`
+											)
 											.setColor(colorResources.red),
 									],
 								})
 							} else {
-								typeError = "La version buscada no se ha registrado."
 								interaction.reply({
 									embeds: [
 										new EmbedBuilder()
-											.setDescription(`Error -> ${typeError}`)
+											.setDescription(
+												`Error -> ${resourcesHelper.searchNotFoundError()}`
+											)
 											.setColor(colorResources.red),
 									],
 								})
