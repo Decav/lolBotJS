@@ -42,7 +42,6 @@ const roleNotFoundError = () => {
 const resourcesHelper = {
 	capitalize,
 	setEmbedDescription,
-	setEmbedFields,
 	getChampionList,
 	getChampionObject,
 	permissionError,
