@@ -3,7 +3,7 @@ require("dotenv").config()
 const express = require("express")
 const cors = require("cors")
 
-// Importación de rutas de ejercicios y dietas
+// Importación de rutas de campeones y meta
 const championRouter = require("./controllers/ChampionController")
 const metaController = require("./controllers/MetaController")
 const app = express()
